@@ -1,0 +1,20 @@
+# Building and releasing library:
+*.egg-info
+*.pyc
+*.so
+build/
+dist/
+venv/
+docs/_build/
+
+# Mac OS
+.DS_Store
+
+# Python tools
+.mypy_cache/
+.pytype/
+.ipynb_checkpoints
+
+# Editors
+.idea
+.vscode
