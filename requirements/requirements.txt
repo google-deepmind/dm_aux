@@ -1,5 +1,5 @@
 chex>=0.0.6
-numpy<1.22
-librosa==0.8.1
-# jax>=0.2.17
-# jaxlib>=0.1.69
+numpy<1.27
+librosa==0.10.1
+# jax>=0.4.24
+# jaxlib>=0.4.24
