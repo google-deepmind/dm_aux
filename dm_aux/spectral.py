@@ -230,8 +230,8 @@ def istft(stft_matrix: chex.Array,
   signal = jnp.squeeze(signal, axis=-1)
 
   ifft_window_sum = librosa.filters.window_sumsquare(
-      window_fn,
-      num_frames,
+      window=window_fn,
+      n_frames=num_frames,
       win_length=frame_length,
       n_fft=n_fft,
       hop_length=frame_step,
