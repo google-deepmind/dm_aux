@@ -67,12 +67,12 @@ class SpectralTest(parameterized.TestCase):
     stft_matrix = spectral.stft(
         signal=data, n_fft=n_fft, frame_length=win_length,
         frame_step=hop_length, window_fn=window, pad=Pad.BOTH,
-        precision=self._get_precision(), pad_mode='reflect')
+        precision=self._get_precision(), pad_mode='constant')
 
     spectral_stft = jax.jit(functools.partial(
         spectral.stft, n_fft=n_fft, frame_length=win_length,
         frame_step=hop_length, window_fn=window, pad=Pad.BOTH,
-        precision=self._get_precision(), pad_mode='reflect'))
+        precision=self._get_precision(), pad_mode='constant'))
     stft_matrix_jit = spectral_stft(signal=data)
 
     np.testing.assert_allclose(stft_matrix[0], stft_matrix_np, rtol=1e-3,
@@ -192,7 +192,7 @@ class SpectralTest(parameterized.TestCase):
     stft_matrix = spectral.stft(
         signal=data, n_fft=n_fft, frame_length=win_length,
         frame_step=hop_length, window_fn=window, pad=Pad.BOTH,
-        precision=self._get_precision(), pad_mode='reflect')
+        precision=self._get_precision(), pad_mode='constant')
 
     # Librosa iSTFT
     reconst_data_np = librosa.core.istft(
@@ -231,7 +231,7 @@ class SpectralTest(parameterized.TestCase):
     stft_matrix = spectral.stft(
         signal=data, n_fft=n_fft, frame_length=win_length,
         frame_step=hop_length, window_fn=window, pad=pad,
-        precision=self._get_precision(), pad_mode='reflect')
+        precision=self._get_precision(), pad_mode='constant')
 
     reconst_data = spectral.istft(
         stft_matrix=stft_matrix, frame_length=win_length, frame_step=hop_length,
